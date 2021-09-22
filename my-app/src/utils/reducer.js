@@ -15,8 +15,8 @@ export const reducer = (state, action) => {
     // case "HANDLE_SEARCH":
     //   return {
     //     ...state,
-    //     page: 0,
-    //     query: action.payload,
+    //     // loading: false,
+    //     results: action.payload,
     //   };
 
     

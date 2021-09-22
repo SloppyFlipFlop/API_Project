@@ -281,7 +281,7 @@ svg {
   height: 15vh;
 }
 .container .header-wrapper {
-  background: #d53b47;
+  background: #d53946;
   width: 100%;
   height: 100%;
   text-align: left;
@@ -295,20 +295,31 @@ svg {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  margin-top: 10px;
 }
-.container .body-wrapper .pokemon-wrapper .name {
+.container .body-wrapper .pokemon-wrapper {
   color: #fff;
   font-size: 15px;
-  text-align: center;
-  width: 100px;
-  height: 100px;
-  border-radius: 1rem;
-  /* background: #68A890; */
   background: #68a890;
   display: flex;
+  width: 100px;
+  color: white;
+  height: 100px;
   justify-content: center;
   align-items: center;
+  margin: 5px 0;
+  border-radius: 1rem;
+}
+.container .body-wrapper .pokemon-wrapper:nth-of-type(3n -2) {
+  border-top-left-radius: 0;
+  border-top-right-radius: 1rem;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 1rem;
+}
+.container .body-wrapper .pokemon-wrapper:nth-of-type(3n) {
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 0;
 }
 
 @media only screen and (min-width: 768px) {
@@ -322,5 +333,23 @@ svg {
   }
   .container .body-wrapper {
     display: flex;
+    width: 100vw;
   }
+  .container .body-wrapper .pokemon-wrapper {
+    width: 15vw;
+  }
+}
+.button-wrapper {
+  margin: 10px 0;
+  display: flex;
+  align-content: center;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.button-wrapper button {
+  color: white;
+  width: 100px;
+  height: 20px;
+  border-radius: 0.25rem;
+  background: #d53946;
 }/*# sourceMappingURL=main.css.map */
