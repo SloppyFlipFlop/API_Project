@@ -21,6 +21,12 @@
     
     align-items: center;
     justify-content: center;
+    &.noshow{
+      // visibility: hidden;
+      cursor: not-allowed;
+    }
   }
-  
+  .page {
+    color: white;
+  }
 }

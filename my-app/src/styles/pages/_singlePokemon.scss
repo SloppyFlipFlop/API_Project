@@ -1,0 +1,15 @@
+@use "../themes/defaultTheme" as *;
+@use "../util/variables" as *;
+@use "../util/mixins" as *;
+
+.pokemon-container {
+  .pokemon-info-wrapper {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    h2 {
+      color: white;
+    }
+  }
+}

@@ -5,13 +5,23 @@ import { useAppContext } from '../utils/context';
 
 const SinglePokemon = () => {
   const {fetchPokemon} = useAppContext()
-  const { id } = useParams();
-  const { name } = fetchPokemon(`i=${id}&`);
+  const { name } = useParams();
+  const { name: pokemonName, types } = fetchPokemon(`${name}`);
+  console.log(fetchPokemon(`${name}`));
   return (
-    
-    <h1>{name}</h1>
+    <div className="pokemon-container">
+      <div className="pokemon-info-wrapper">
+      <h2>{pokemonName}</h2>
+      <div className="type-wrapper">
+        {/* {types.map((type) => {
+          console.log(type);
+          <div className="type">{type.type.name}</div>
+        })} */}
+      </div>
+      </div>
+    </div>
   )
-  {console.log(`the id is : ${id}`);}
+  
 }
 
 export default SinglePokemon

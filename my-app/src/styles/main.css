@@ -339,6 +339,16 @@ svg {
     width: 15vw;
   }
 }
+.pokemon-container .pokemon-info-wrapper {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+.pokemon-container .pokemon-info-wrapper h2 {
+  color: white;
+}
+
 .button-wrapper {
   margin: 10px 0;
   display: flex;
@@ -357,4 +367,10 @@ svg {
   font-size: 16px;
   align-items: center;
   justify-content: center;
+}
+.button-wrapper .button.noshow {
+  cursor: not-allowed;
+}
+.button-wrapper .page {
+  color: white;
 }/*# sourceMappingURL=main.css.map */

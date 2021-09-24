@@ -1,14 +1,15 @@
 import React, { useState, useContext, useEffect, useReducer } from "react";
 import { reducer } from "./reducer";
 
-const API_ENDPOINT = `https://pokeapi.co/api/v2/pokemon?limit=20`;
+const API_ENDPOINT = `https://pokeapi.co/api/v2/pokemon?limit=30&`;
 
 const initialState = {
   count: 0,
-  next: "https://pokeapi.co/api/v2/pokemon?offset=20&limit=20",
-  previous: "",
+  // next: "https://pokeapi.co/api/v2/pokemon?offset=20&limit=20",
+  // previous: "",
   results: [],
-  // query: "ditto"
+  page: 1,
+  
 };
 const AppContext = React.createContext();
 export const AppProvider = ({ children }) => {
@@ -22,8 +23,8 @@ export const AppProvider = ({ children }) => {
       const response = await fetch(url);
       const data = await response.json();
       dispatch({ type: "SET_RESULTS", payload: data });
-      console.log("data: ");
-      console.log(data);
+      
+      // console.log(`data: ${data}`);
     } catch (error) {
       console.error(error);
     }
@@ -31,15 +32,17 @@ export const AppProvider = ({ children }) => {
 
 
 
+  
 
-
-  const changePageNext = (next) => {
-    
-    dispatch({ type: "SET_RESULTS", payload: fetchPokemon(next) });
+  const changePageNext = () => {
+    const page = state.page + 1;
+    // console.log(`next - current page: ${page}`);
+    dispatch({ type: "CHANGE_NEXT_BUTTON", payload: page });
   }
-  const changePagePrev = (prev) => {
-    console.log(prev);
-    dispatch({ type: "SET_RESULTS", payload: fetchPokemon(prev) });
+  const changePagePrev = () => {
+    const page = state.page - 1;
+    // console.log(`prev - current page: ${page}`);
+    dispatch({ type: "CHANGE_PREV_BUTTON", payload: page });
   }
 
 
@@ -47,10 +50,9 @@ export const AppProvider = ({ children }) => {
 
 
   useEffect(() => {
-    fetchPokemon(`${API_ENDPOINT}`);
-    // fetchPokemon(`${API_ENDPOINT}${query}`)
-    console.log(fetchPokemon(`${API_ENDPOINT}`));
-  }, [state.results]);
+    fetchPokemon(`${API_ENDPOINT}offset=${state.page*30}`);
+    // console.log(fetchPokemon(`${API_ENDPOINT}offset=${state.page*30}`));
+  }, [state.page]);
 
   return (
     <AppContext.Provider value={{...state, fetchPokemon, dispatch, changePageNext, changePagePrev }}>

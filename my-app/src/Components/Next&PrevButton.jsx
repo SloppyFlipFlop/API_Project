@@ -1,28 +1,26 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import NextAndPrevPages from "../Pages/NextAndPrevPages";
+import React from "react";
 import { useAppContext } from "../utils/context";
-import { reducer } from "../utils/reducer";
+
 const NextPrevButton = () => {
-  const { previous, next, fetchPokemon, dispatch, changePageNext, changePagePrev } = useAppContext();
-  return (
-    <div className="button-wrapper">
-      <a
-        className="button"
-        onClick={changePagePrev(previous)}
-        href=""
-      >
-        Prev
-      </a>
-      <a
-        className="button"
-        onClick={changePageNext(next)}
-        href=""
-      >
-        Next
-      </a>
-    </div>
-  );
+  const { page, changePageNext, changePagePrev } = useAppContext();
+  
+    return (
+      <div className="button-wrapper">
+        {page === 1 ? (
+          <button className="button noshow">Prev</button>
+        ) : (
+          <button className="button" onClick={changePagePrev}>
+            Prev
+          </button>
+        )}
+
+        <div className="page">{page}</div>
+
+        <button className="button" onClick={changePageNext}>
+          Next
+        </button>
+      </div>
+    );
 };
 
 export default NextPrevButton;

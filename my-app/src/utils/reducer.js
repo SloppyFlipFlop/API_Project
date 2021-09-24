@@ -1,4 +1,4 @@
-import { act } from "react-dom/test-utils";
+// import { act } from "react-dom/test-utils";
 
 export const reducer = (state, action) => {
   switch (action.type) {
@@ -18,18 +18,15 @@ export const reducer = (state, action) => {
       return {
         ...state,
         loading: false,
-        results: action.payload.results,
-        next: action.payload.next,
-        previous: action.payload.previous
+        page: action.payload,
       };
 
     case "CHANGE_PREV_BUTTON":
       return {
         ...state,
         loading: false,
-        results: action.payload.results,
-        next: action.payload.next,
-        previous: action.payload.previous,
+        page: action.payload,
+        
       };
 
     default:
