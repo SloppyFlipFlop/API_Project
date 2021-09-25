@@ -18,7 +18,7 @@ export const reducer = (state, action) => {
       return {
         ...state,
         loading: false,
-        page: action.payload,
+        page: action.payload.page,
       };
 
     case "CHANGE_PREV_BUTTON":
@@ -26,7 +26,24 @@ export const reducer = (state, action) => {
         ...state,
         loading: false,
         page: action.payload,
-        
+      };
+
+      case "CHANGE_QUERY":
+        return {
+          ...state,
+          query: action.payload
+        };
+
+    case "CHANGE_SINGLE_PAGE_STATUS":
+      return {
+        ...state,
+        isSingle: action.payload,
+      };
+
+      case "SET_SINGLE_RESULTS":
+      return {
+        ...state,
+        results: action.payload.results,
       };
 
     default:

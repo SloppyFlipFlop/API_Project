@@ -6,8 +6,8 @@ import { useAppContext } from "../utils/context";
 import SinglePokemon from "./SinglePokemon";
 
 const Home = () => {
-  const { results } = useAppContext();
-
+  const { results, changePageSingle } = useAppContext();
+  
   return (
     <div id="Home" className="container">
       <div className="header-wrapper">
@@ -16,12 +16,14 @@ const Home = () => {
       <NextPrevButton />
       <div className="body-wrapper">
         {results.map((pokemon, id) => {
-          
           const { name } = pokemon;
-          console.log(`Name is : ${name}`);
-          return <Link className="pokemon-wrapper" key={id} to={`/pokemon/${name}`}>
-            {name}
-          </Link>;
+          // const singleStatus = true
+          console.log(`name is : ${name}`);
+          return (
+            <Link className="pokemon-wrapper" key={id} onClick={() => changePageSingle(name)} to={`/pokemon/${name}`}>
+              {name}
+            </Link>
+          );
         })}
       </div>
     </div>

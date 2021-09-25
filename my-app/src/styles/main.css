@@ -339,6 +339,13 @@ svg {
     width: 15vw;
   }
 }
+* {
+  color: white;
+}
+
+.pokemon-container .homeButton {
+  color: white;
+}
 .pokemon-container .pokemon-info-wrapper {
   display: flex;
   align-content: center;
